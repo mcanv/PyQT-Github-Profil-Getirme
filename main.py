@@ -7,7 +7,7 @@ import webbrowser as wb
 
 app = QApplication(sys.argv)
 
-def onClick():
+def getUser():
     if(textbox.text() == ""):
         msgbox.setText("Lütfen geçerli bir kullanıcı adı giriniz!")
         msgbox.show()
@@ -73,7 +73,7 @@ textbox.show()
 button = QPushButton(pencere)
 button.setText("Getir")
 button.move(610, 200)
-button.clicked.connect(onClick)
+button.clicked.connect(getUser)
 
 pencere.show()
 
