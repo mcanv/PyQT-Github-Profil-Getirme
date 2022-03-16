@@ -57,6 +57,7 @@ table.setHorizontalHeaderLabels(['Ad', 'Konum', 'Repo Sayısı', 'Takipçi Sayı
 table.itemDoubleClicked.connect(goToLink)
 table.setEditTriggers(QAbstractItemView.NoEditTriggers)
 table.move(10, 100)
+table.verticalHeader().setVisible(False)
 table.show();
 
 msgbox = QMessageBox()
