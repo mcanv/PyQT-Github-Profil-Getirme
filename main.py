@@ -5,6 +5,8 @@ from PyQt5.QtWidgets import *
 import pyperclip as pc
 import webbrowser as wb
 
+from githubprofile import GithubProfile
+
 app = QApplication(sys.argv)
 
 def onClick():
@@ -13,17 +15,15 @@ def onClick():
         msgbox.show()
         textbox.setText("")
     else:
-        url = "https://api.github.com/users/" + textbox.text()
-        response = requests.get(url)
-        data = json.loads(response.text)
-        if(response.status_code == 200):
+        profile = GithubProfile(textbox.text())
+        if profile.name is not None:            
             table.setRowCount(0)
             table.insertRow(0)
-            table.setItem(0, 0, QTableWidgetItem(data["name"]))
-            table.setItem(0, 1, QTableWidgetItem(data["location"]))
-            table.setItem(0, 2, QTableWidgetItem(str(data["public_repos"])))
-            table.setItem(0, 3, QTableWidgetItem(str(data["followers"])))
-            table.setItem(0, 4, QTableWidgetItem(data["html_url"]))
+            table.setItem(0, 0, QTableWidgetItem(profile.name))
+            table.setItem(0, 1, QTableWidgetItem(profile.location))
+            table.setItem(0, 2, QTableWidgetItem(str(profile.repos)))
+            table.setItem(0, 3, QTableWidgetItem(str(profile.followers)))
+            table.setItem(0, 4, QTableWidgetItem(profile.url))
             textbox.setText("")
         else:
             table.setRowCount(0)
