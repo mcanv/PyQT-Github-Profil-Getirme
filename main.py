@@ -1,9 +1,10 @@
 import sys
 import requests
 import json
-from PyQt5.QtWidgets import *
+from PyQt6.QtWidgets import *
 import pyperclip as pc
 import webbrowser as wb
+from PyQt6.QtGui import *
 
 app = QApplication(sys.argv)
 
@@ -38,10 +39,9 @@ def goToLink(item):
         wb.open(item.text())
 
 pencere = QWidget()
-pencere.setWindowTitle("PyQt5 Github Kullanıcı Bilgileri Uygulaması")
+pencere.setWindowTitle("Github Kullanıcı Bilgileri Uygulaması")
 pencere.resize(700, 250)
 pencere.setFixedSize(pencere.size())
-centerPoint = app.desktop().screenGeometry()
 
 yazi = QLabel(pencere)
 yazi.move(10, 25)
@@ -52,18 +52,18 @@ table.resize(680, 50)
 table.setRowCount(1)
 table.setColumnCount(5)
 table.horizontalHeader().setStretchLastSection(True)
-table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
 table.setHorizontalHeaderLabels(['Ad', 'Konum', 'Repo Sayısı', 'Takipçi Sayısı', 'Link'])
 table.itemDoubleClicked.connect(goToLink)
-table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
 table.move(10, 100)
 table.verticalHeader().setVisible(False)
 table.show();
 
 msgbox = QMessageBox()
 msgbox.setWindowTitle("Hata!")
-msgbox.setIcon(QMessageBox.Critical)
-msgbox.setStandardButtons(QMessageBox.Ok)
+msgbox.setIcon(QMessageBox.Icon.Critical)
+msgbox.setStandardButtons(QMessageBox.StandardButton.Ok)
 
 textbox = QLineEdit(pencere)
 textbox.resize(300, 30)
@@ -77,4 +77,4 @@ button.clicked.connect(getUser)
 
 pencere.show()
 
-sys.exit(app.exec_())
+sys.exit(app.exec())
