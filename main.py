@@ -1,7 +1,5 @@
 from cgitb import text
 import sys
-import requests
-import json
 from PyQt6.QtWidgets import *
 import pyperclip as pc
 import webbrowser as wb
