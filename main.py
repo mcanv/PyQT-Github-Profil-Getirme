@@ -1,9 +1,10 @@
 import sys
 import requests
 import json
-from PyQt5.QtWidgets import *
+from PyQt6.QtWidgets import *
 import pyperclip as pc
 import webbrowser as wb
+from githubprofile import GithubProfile
 
 from githubprofile import GithubProfile
 
