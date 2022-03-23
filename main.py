@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import *
 import pyperclip as pc
 import webbrowser as wb
 from PyQt6.QtGui import *
-from lib import GithubProile
+from githubprofile import GithubProile
 
 app = QApplication(sys.argv)
 
